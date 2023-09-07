@@ -1,0 +1,384 @@
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/opentype.js"></script>
+
+  <style>
+    body {
+      font-family: 'permuted-font';
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 8px;
+    }
+
+    .demo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      row-gap: 16px;
+    }
+
+    .input textarea {
+      flex-grow: 1;
+    }
+
+    .demo>.input {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      column-gap: 8px;
+    }
+
+    .demo>.input>button {
+      align-self: center;
+      height: 40px;
+      width: 50px;
+    }
+
+    .output {
+      display: flex;
+      column-gap: 16px;
+      width: 100%;
+    }
+
+    .output>div {
+      flex: 1 1 50%;
+    }
+
+    .output>div>div {
+      border: 1px solid black;
+      padding: 12px;
+    }
+
+    .output>div>p {
+      margin: 0;
+    }
+
+    #output-normal-font {
+      font-family: 'original-font';
+    }
+
+    .permutation {
+      display: flex;
+      column-gap: 8px;
+    }
+
+    .permutation>table {
+      flex-grow: 1;
+    }
+
+    .permutation>button {
+      align-self: center;
+      height: 40px;
+      flex-grow: 0;
+    }
+
+    table,
+    tr,
+    td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="permute-text">Copy protection through fonts</h1>
+    <p class="permute-text">Have you ever been annoyed when you've found a website disables text selection or right
+      clicking in an attempt to prevent you from copying it's contents? Well here's something even more annoying. Sorry,
+      I just had the idea and wanted to play around with it.</p>
+    <p class="permute-text">If you try copying the text of this website, when you paste it you'll get something
+      different and jumbled. Right now what happens is just a permutation of the english letters. Then the page
+      generates a font that reverses that permutation when rendering the text. It's also possible to make the
+      substitution more complicated with ligatures, though I don't implement that here</p>
+    <p class="permute-text">Try the demo below and check out the source code for this page.</p>
+    <div class="demo">
+      <div class="input">
+        <textarea id="text-input" rows="4">Put some text in here to see what you get.</textarea>
+        <button id="go">Go</button>
+      </div>
+      <div class="output">
+        <div>
+          <strong class="permute-text">With decoder font</strong>
+          <div>
+            <p id="output-decoder-font" style="font-family: permuted-font"></p>
+          </div>
+        </div>
+        <div>
+          <strong class="permute-text">With normal font</strong>
+          <div>
+            <p id="output-normal-font"></p>
+          </div>
+        </div>
+      </div>
+      <div class="permutation">
+        <table>
+          <tr>
+            <th class="permute-text">Permutation</th>
+          </tr>
+          <tr>
+            <th class="permute-text">Renders as</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+            <td>F</td>
+            <td>G</td>
+            <td>H</td>
+            <td>I</td>
+            <td>J</td>
+            <td>K</td>
+            <td>L</td>
+            <td>M</td>
+            <td>N</td>
+            <td>O</td>
+            <td>P</td>
+            <td>Q</td>
+            <td>R</td>
+            <td>S</td>
+            <td>T</td>
+            <td>U</td>
+            <td>V</td>
+            <td>W</td>
+            <td>X</td>
+            <td>Y</td>
+            <td>Z</td>
+          </tr>
+          <tr>
+            <th class="permute-text">Copies as</th>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>E</td>
+            <td>F</td>
+            <td>G</td>
+            <td>H</td>
+            <td>I</td>
+            <td>J</td>
+            <td>K</td>
+            <td>L</td>
+            <td>M</td>
+            <td>N</td>
+            <td>O</td>
+            <td>P</td>
+            <td>Q</td>
+            <td>R</td>
+            <td>S</td>
+            <td>T</td>
+            <td>U</td>
+            <td>V</td>
+            <td>W</td>
+            <td>X</td>
+            <td>Y</td>
+            <td>Z</td>
+          </tr>
+          <tr>
+            <th class="permute-text">Renders as</th>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+            <td>d</td>
+            <td>e</td>
+            <td>f</td>
+            <td>g</td>
+            <td>h</td>
+            <td>i</td>
+            <td>j</td>
+            <td>k</td>
+            <td>l</td>
+            <td>m</td>
+            <td>n</td>
+            <td>o</td>
+            <td>p</td>
+            <td>q</td>
+            <td>r</td>
+            <td>s</td>
+            <td>t</td>
+            <td>u</td>
+            <td>v</td>
+            <td>w</td>
+            <td>x</td>
+            <td>y</td>
+            <td>z</td>
+          </tr>
+          <tr>
+            <th class="permute-text">Copies as</th>
+            <td>a</td>
+            <td>b</td>
+            <td>c</td>
+            <td>d</td>
+            <td>e</td>
+            <td>f</td>
+            <td>g</td>
+            <td>h</td>
+            <td>i</td>
+            <td>j</td>
+            <td>k</td>
+            <td>l</td>
+            <td>m</td>
+            <td>n</td>
+            <td>o</td>
+            <td>p</td>
+            <td>q</td>
+            <td>r</td>
+            <td>s</td>
+            <td>t</td>
+            <td>u</td>
+            <td>v</td>
+            <td>w</td>
+            <td>x</td>
+            <td>y</td>
+            <td>z</td>
+          </tr>
+        </table>
+        <button id="randomize-permutation">Randomize</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    function findGlyphIndex(glyphs, character) {
+      for (let i = 0; i < glyphs.length; i++) {
+        if (glyphs.glyphs[i].name == character) {
+          return i;
+        }
+      }
+    }
+
+    function permuteFont(originalFont, newFont, permutation) {
+      for (const [from, to] of Object.entries(permutation)) {
+        const fromIndex = findGlyphIndex(originalFont.glyphs, from);
+        const toIndex = findGlyphIndex(originalFont.glyphs, to);
+        if (fromIndex == null || toIndex == null) {
+          continue;
+        }
+
+        newFont.glyphs.glyphs[fromIndex].name = originalFont.glyphs.glyphs[toIndex].name;
+        newFont.glyphs.glyphs[fromIndex].unicode = originalFont.glyphs.glyphs[toIndex].unicode;
+        newFont.glyphs.glyphs[fromIndex].unicodes = originalFont.glyphs.glyphs[toIndex].unicodes;
+        newFont.glyphs.glyphs[fromIndex].index = originalFont.glyphs.glyphs[toIndex].index;
+      }
+    }
+
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    function permute(s) {
+      const arr = s.split('');
+      for (let i = arr.length - 1; i >= 1; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        const temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
+
+      const result = { reverse: {} };
+      for (let i = 0; i < s.length; i++) {
+        result[s[i]] = arr[i];
+        result.reverse[arr[i]] = s[i];
+      }
+      return result;
+    }
+
+    let permutation = permute(letters);
+
+    const textInput = document.getElementById('text-input');
+    const goBtn = document.getElementById('go');
+    const decodedFontOutput = document.getElementById('output-decoder-font');
+    const normalFontOutput = document.getElementById('output-normal-font');
+    const randomizePermutationBtn = document.getElementById('randomize-permutation');
+
+    function permuteString(s, permutation) {
+      let result = Array.from(s);
+      for (let i = 0; i < result.length; i++) {
+        const c = result[i];
+        result[i] = permutation[c] ?? c;
+      }
+      return result.join('');
+    }
+
+    go.addEventListener('click', () => {
+      const permuted = permuteString(textInput.value, permutation);
+      decodedFontOutput.textContent = permuted;
+      normalFontOutput.textContent = permuted;
+    });
+    go.click();
+
+    randomizePermutationBtn.addEventListener('click', () => {
+      // First reverse the page text permutation so that when we change it again everything still works
+      permutePageText(permutation.reverse);
+      permutation = permute(letters);
+      generateFonts();
+      go.click();
+    });
+
+    // This could be done server side if you wanted to be a real jerk
+    // Right now the whole this is thwarted by turning off javascript
+    function permutePageText(permutation) {
+      const elements = document.getElementsByClassName("permute-text");
+      for (const element of elements) {
+        element.textContent = permuteString(element.textContent, permutation);
+      }
+      fillPermutationTable(permutation);
+    }
+
+    function fillPermutationTable(permutation) {
+      const elements = document.querySelectorAll('.permutation > table td');
+      for (let i = 0; i < 26; i++) {
+        elements[i].textContent = permuteString(String.fromCharCode('A'.charCodeAt(0) + i), permutation);
+      }
+      for (let i = 0; i < 26; i++) {
+        elements[i + 26].textContent = permuteString(elements[i].textContent, permutation);
+      }
+      for (let i = 0; i < 26; i++) {
+        elements[i + 52].textContent = permuteString(String.fromCharCode('a'.charCodeAt(0) + i), permutation);
+      }
+      for (let i = 0; i < 26; i++) {
+        elements[i + 78].textContent = permuteString(elements[i + 52].textContent, permutation);
+      }
+    }
+
+    let originalFontFace;
+    let permutedFontFace;
+
+    async function generateFonts() {
+      const buffer = await fetch('/times.ttf').then(res => res.arrayBuffer());
+
+      const originalFont = opentype.parse(buffer);
+      const newFont = opentype.parse(buffer);
+
+      permuteFont(originalFont, newFont, permutation);
+
+      // You can also add ligatures to make stuff more complicated.
+      // I think you'd need to take some care choosing the substitutions and ligatures
+      // such that nothing conflicts
+
+      // font.substitution.add('liga', { sub: [61, 36], by: [37] });
+
+      if (!originalFontFace) {
+        originalFontFace = new FontFace('original-font', originalFont.toArrayBuffer());
+        await originalFontFace.load();
+        document.fonts.add(originalFontFace);
+      }
+
+      if (permutedFontFace) {
+        console.log('deletin', document.fonts.delete(permutedFontFace));
+      }
+      permutedFontFace = new FontFace('permuted-font', newFont.toArrayBuffer());
+      await permutedFontFace.load();
+      document.fonts.add(permutedFontFace);
+
+      permutePageText(permutation);
+    }
+    generateFonts();
+
+  </script>
+</body>
