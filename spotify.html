@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <title>Spotify API Auth Code</title>
+<style>
+#code {
+    border: 1px solid black;
+    padding: 4px;
+    max-width: 95%;
+    margin: 8px auto;
+}
+</style>
+</head>
+<body>
+    Copy this code into the runelite plugin settings <button onclick="copy()">Copy</button>
+    <p id="code"></p>
+    <script>
+	const urlParams = new URLSearchParams(window.location.search);
+	const code = urlParams.get('code');
+	document.getElementById("code").textContent = code;
+
+	async function copy() {
+	    await navigator.clipboard.writeText(code);
+	}
+    </script>
+</body>
