@@ -2,18 +2,29 @@
 <head>
     <title>Spotify API Auth Code</title>
 <style>
+#copy-block {
+    display: flex;
+    column-gap: 8px;
+    margin: 8px 0;
+}
 #code {
     border: 1px solid black;
     padding: 4px;
     max-width: 95%;
-    margin: 8px auto;
+    margin: auto;
     overflow-wrap: anywhere;
 }
 </style>
 </head>
 <body>
-    Copy this code into the runelite plugin settings <button onclick="copy()">Copy</button>
-    <p id="code"></p>
+    <h2>Copy this code into the popup in runelite</h2>
+    <div id="copy-block">
+	<p id="code"></p>
+	<button onclick="copy()">Copy</button>
+    </div>
+    <div style="text-align: center">
+	<img width="500px" src="spotifyScreenshot.png" />
+    </div>
     <script>
 	const urlParams = new URLSearchParams(window.location.search);
 	const code = urlParams.get('code');
